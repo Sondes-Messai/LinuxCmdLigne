@@ -3,7 +3,7 @@
 #Les  Commandes Linux de Base les plus Populaires que vous Devez Connaitre:
 
 
-https://github.com/luong-komorebi/Awesome-Linux-Software/blob/master/img/tux.png
+<img>https://github.com/luong-komorebi/Awesome-Linux-Software/blob/master/img/tux.png</img>
 
 1. Commande sudo
 Abréviation de superuser do, sudo est l’une des commandes de base les plus populaires de Linux, qui vous permet d’effectuer des tâches nécessitant des autorisations administratives ou de super utilisateur.
