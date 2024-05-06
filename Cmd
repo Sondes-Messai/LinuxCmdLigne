@@ -1,0 +1,172 @@
+ #Fiche de revision Linux:
+
+
+1-Affichage de l'adresse ip de la  machine virtuel sur le serveur : ip a 
+
+ 
+
+ 
+
+2-Connexion à distance à la machine virtuel : ssh ameni@ip de la machine 
+
+ 
+
+Se connecter sur root : su - 
+
+Se connecter à un utilisateur : su - "user" 
+
+Création d'un fichier : touch "file" 
+
+Création d'un dossier : mkdir "folder" 
+
+Afficher les détails du répertoire : ls -l 
+
+Modifier un fichier : nano "file" 
+
+Quitter et sauvegarder les modification du ficher  : ctrl+x --> o 
+
+Afficher contenu de fichier : cat  "file" 
+
+Nettoyer l'écran : ctrl+l 
+
+Savoir le chemin où tu es : pwd 
+
+Mise à jour des logiciels : apt  update 
+
+Chercher les logiciels : apt-cache search  -n  
+
+Ajouter un utilisateur : useradd -m-s /bin/bash user 
+
+Ajouter un groupe : groupadd  nom-group      
+
+Affecter un utilisateur pour un groupe : usermod -aG nomgroupe user 
+
+Création d'une partition sur l'interface graphique de la machine virtuelle après il faut créer un volume physique : pvcreate /dev/sdb(nom de partion) 
+
+
+
+
+Fiche de Révision Docker:
+
+Gestion des Images:
+
+Construire une image : docker build -t <nom_image>
+
+Lister les images locales : docker images
+
+Supprimer une image : docker rmi <nom_image>
+
+Nettoyer les images inutilisées : docker image prune
+
+Gestion des Conteneurs:
+
+Créer et exécuter un conteneur : docker run --name <nom_conteneur> <nom_image>
+
+Publier les ports : docker run -p <port_hôte>:<port_conteneur> <nom_image>
+
+Exécuter en arrière-plan : docker run -d <nom_image>
+
+Démarrer/Arrêter un conteneur : docker start|stop <nom_conteneur>
+
+Supprimer un conteneur : docker rm <nom_conteneur>
+
+Ouvrir un shell dans un conteneur : docker exec -it <nom_conteneur> sh
+
+Suivre les logs : docker logs -f <nom_conteneur>
+
+Inspecter un conteneur : docker inspect <nom_conteneur>
+
+Lister les conteneurs actifs : docker ps
+
+Lister tous les conteneurs : docker ps --all
+
+Docker Hub et Transfert d’Images
+
+Connexion à Docker Hub : docker login -u <nom_utilisateur>
+
+Publier une image sur Docker Hub : docker push 
+
+<nom_utilisateur>/<nom_image>
+
+Chercher une image sur Docker Hub : docker search <nom_image>
+
+Télécharger une image de Docker Hub : docker pull <nom_image>
+
+Informations et Aide
+
+Aide sur Docker : docker --help
+
+Informations système : docker info
+
+Statistiques des ressources : docker container stats
+
+Autres Commandes Utiles
+
+Démarrer des services avec docker-compose : docker compose up
+
+Arrêter et supprimer les services avec docker-compose : docker compose down
+
+
+
+le fichier yml:
+
+
+docker-compose up -d
+
+
+
+
+----------------------------------------------------------------------------
+Installation Docker :   ( apt install docker.io -y)    (apt install docker-compose -y) 
+
+ 
+
+Affecter l'utilisateur au groupe docker créer déjà par défaut avec l'installation de package docker 
+
+(usermod -aG docker ameni) -> pour vérifier (groups ameni) 
+
+Afficher les images de docker : ( images docker) -> au début aucune image 
+
+Télécharger l'image debian : aller sur docker hub : recherche "debian" et copier coller le lien (docker pull debian) dans power shell 
+
+Lister les centenaires (docker ps -a) 
+
+Lancer docker dans un centenaire(docker run -it --name madebian debian) 
+
+Exit pour sortir de centenaire 
+
+Pour supprimer un centenaire   ( docker rm -f 8d) après -f on ajoute les deux premieres caractères de l'id centenaire. 
+
+Créer un centenaire base des données ( 
+
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=****  -d mysql 
+
+ 
+
+ 
+
+À partir de l’adresse <https://hub.docker.com/_/mysql>  
+
+) 
+
+Exécuter le centenaire : (docker exec -it mysql bash) 
+
+Connecter wordpress par database (docker run --name my-wordpress --link mabasedonnées:mysql -p 8080:80 -d wordpress) 
+
+Lister les réseaux docker (docker network ls) 
+
+Création d'un reseau docker (docker network create net01(nomreseau)) 
+
+Création de base dans le centenaire ( mysql -u root -p) après (create database wordpress;) exit exit pour quitter 
+
+VOLUME / 
+--------------------------------------------------------------------
+Création volume (docker create volume nom-volume) 
+
+Lister les volumes (docker volume ls) 
+
+Pour supprimer un volume (docker volume rm NOMVOLUME) 
+
+Afficher le contenue de volume sur web a travers le port 8080 (docker run -d --name website_container -v /home/ameni/website:/var/www/html -p 8080:80 ubuntu/apache2) 
+
+Supprimer tous les centenaires (docker rm -f $(docker ps -qa) 
